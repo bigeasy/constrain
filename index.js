@@ -7,10 +7,18 @@ module.exports = function (comparator, encoder, options) {
     } else if (value = options.lt) {
         stop.value = encoder(value)
         stop.test = function (key) { return comparator(key, stop.value) < 0 }
+    } else {
+        stop.test = function () { return true }
     }
-    if (value = options.gt) {
+    if ((!options.reverse && (value = options.start)) || (value = options.gte)) {
+        start.value = encoder(value)
+        start.test = options.reverse ? function (key) { return comparator(key, start.value) > 0 }
+                                     : function () { return true }
+    } else if (value = options.gt) {
         start.value = encoder(value)
         start.test = function (key) { return comparator(key, start.value) > 0 }
+    } else {
+        start.test =function () { return true }
     }
     return options.reverse
          ? { start: stop.test, stop: start.test, key: stop.value }
