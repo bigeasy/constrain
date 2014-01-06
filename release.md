@@ -5,6 +5,7 @@ including a stab at some of the reverse and forward iterator logic.
 
 ### Issue by Issue
 
+ * Release version 0.0.1. #18.
  * Implement reverse greater than or equal to. #17.
  * Implement forward less than or equal to. #16.
  * Implement forward with no upper range. #13.
