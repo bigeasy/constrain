@@ -12,7 +12,7 @@ module.exports = function (comparator, encoder, options) {
     }
     if ((!options.reverse && (value = options.start)) || (value = options.gte)) {
         start.value = encoder(value)
-        start.test = options.reverse ? function (key) { return comparator(key, start.value) > 0 }
+        start.test = options.reverse ? function (key) { return comparator(key, start.value) >= 0 }
                                      : function () { return true }
     } else if (value = options.gt) {
         start.value = encoder(value)
