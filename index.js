@@ -1,15 +1,15 @@
-module.exports = function (comparator, options) {
+module.exports = function (comparator, encoder, options) {
     var value, start = {}, stop = {}
     if ((options.reverse && (value = options.start)) || (value = options.lte)) {
-        stop.value = value
+        stop.value = encoder(value)
         stop.test = options.reverse ? function () { return true }
                                     : function (key) { return comparator(key, stop.value) < 0 }
     } else if (value = options.lt) {
-        stop.value = value
+        stop.value = encoder(value)
         stop.test = function (key) { return comparator(key, stop.value) < 0 }
     }
     if (value = options.gt) {
-        start.value = value
+        start.value = encoder(value)
         start.test = function (key) { return comparator(key, start.value) > 0 }
     }
     return options.reverse
