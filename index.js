@@ -3,7 +3,7 @@ module.exports = function (comparator, encoder, options) {
     if ((options.reverse && (value = options.start)) || (value = options.lte)) {
         stop.value = encoder(value)
         stop.test = options.reverse ? function () { return true }
-                                    : function (key) { return comparator(key, stop.value) < 0 }
+                                    : function (key) { return comparator(key, stop.value) <= 0 }
     } else if (value = options.lt) {
         stop.value = encoder(value)
         stop.test = function (key) { return comparator(key, stop.value) < 0 }
