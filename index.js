@@ -1,6 +1,10 @@
 module.exports = function (comparator, options) {
     var value, start = {}, stop = {}
-    if (value = options.lt) {
+    if ((options.reverse && (value = options.start)) || (value = options.lte)) {
+        stop.value = value
+        stop.test = options.reverse ? function () { return true }
+                                    : function (key) { return comparator(key, stop.value) < 0 }
+    } else if (value = options.lt) {
         stop.value = value
         stop.test = function (key) { return comparator(key, stop.value) < 0 }
     }
