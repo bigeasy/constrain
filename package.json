@@ -1,0 +1,36 @@
+{
+    "name":             "correlate",
+    "version":          "9.9.9",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":      "Create a compartor strategy based on LevelUP API iterator parameters.",
+    "url":              "http://bigeasy.github.com/correlate",
+    "keywords":
+    [
+                        "btree", "leveldb", "levelup", "binary", "mvcc",
+                        "database", "json", "b-tree", "concurrent", "persistence"
+    ],
+    "contributors":     [],
+    "homepage":         "https://github.com/bigeasy/correlate",
+    "bugs":             "https://github.com/bigeasy/correlate/issues",
+    "licenses":
+    [{
+                        "type": "MIT",
+                        "url": "http://github.com/bigeasy/correlate/raw/master/LICENSE"
+    }],
+    "repository":
+    {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/correlate.git"
+    },
+    "dependencies":
+    {
+    },
+    "devDependencies":
+    {
+                        "proof":              "0.0.36"
+    },
+    "scripts":
+    {
+                        "test": "proof platform win32 && proof test */*/*.t.js || t/test"
+    }
+}
