@@ -20,7 +20,13 @@ module.exports = function (comparator, encoder, options) {
     } else {
         start.test =function () { return true }
     }
-    return options.reverse
+    var range = options.reverse
          ? { start: stop.test, stop: start.test, key: stop.value }
          : { start: start.test, stop: stop.test, key: start.value }
+    return {
+        valid: function (key) {
+            return range.start(key) && range.stop(key)
+        },
+        key: range.key
+    }
 }

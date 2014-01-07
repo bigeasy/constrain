@@ -1,18 +1,11 @@
-### Conversions
+### Validator as Function
 
-Sketch of the basic conversions that are used with iterators in Locket,
-including a stab at some of the reverse and forward iterator logic.
+Combine the `start` and `stop` function in the object returned by `correlate`
+into a single function which returns true if the value is valid for the range.
+Eventually, this function also track the limit.
 
 ### Issue by Issue
 
- * Release version 0.0.1. #18.
- * Implement reverse greater than or equal to. #17.
- * Implement forward less than or equal to. #16.
- * Implement forward with no upper range. #13.
- * Implement forward with no key. #12.
- * Implement reverse with no key. #11.
- * Implement reverse less than or equal to. #10.
- * Add encoder. #9.
- * Implement reverse with start key. #8.
- * Implement reversed less than. #7.
- * Implement reversed greater than. #6.
+ * Release version 0.0.2. #20.
+ * Convert range tests to single function. #19.
+ * Add direction to range object. #14.
