@@ -27,6 +27,7 @@ module.exports = function (comparator, encoder, options) {
         valid: function (key) {
             return range.start(key) && range.stop(key)
         },
-        key: range.key
+        key: range.key,
+        direction: options.reverse ? 'reverse' : 'forward'
     }
 }
