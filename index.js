@@ -1,5 +1,5 @@
 module.exports = function (comparator, encoder, options) {
-    var value, start = {}, stop = {}
+    var value, start = {}, stop = {}, limit = Number.MAX_VALUE, count = 0
     if ((options.reverse && (value = options.start)) || (value = options.lte)) {
         stop.value = encoder(value)
         stop.test = options.reverse ? function () { return true }
@@ -26,12 +26,15 @@ module.exports = function (comparator, encoder, options) {
     } else {
         start.test =function () { return true }
     }
+    if (options.limit != null) {
+        limit = options.limit
+    }
     var range = options.reverse
          ? { start: stop.test, stop: start.test, key: stop.value }
          : { start: start.test, stop: stop.test, key: start.value }
     return {
         valid: function (key) {
-            return range.start(key) ? (range.stop(key) ? 0 : 1) : -1
+            return range.start(key) ? (range.stop(key) && count++ < limit ? 0 : 1) : -1
         },
         key: range.key,
         direction: options.reverse ? 'reverse' : 'forward'
