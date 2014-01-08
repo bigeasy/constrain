@@ -8,4 +8,5 @@ both a `start` key and a comparison key.
 
 ### Issue by Issue
 
+ * Implement forward `start` and `gt`. #24.
  * Implement reversed `start` and `lt`. #23.

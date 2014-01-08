@@ -17,6 +17,9 @@ module.exports = function (comparator, encoder, options) {
         start.value = encoder(value)
         start.test = options.reverse ? function (key) { return comparator(key, start.value) >= 0 }
                                      : function () { return true }
+        if (options.gt) {
+            start.test = function (key) { return comparator(key, start.value) > 0 }
+        }
     } else if (value = options.gt) {
         start.value = encoder(value)
         start.test = function (key) { return comparator(key, start.value) > 0 }
