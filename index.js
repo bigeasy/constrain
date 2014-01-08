@@ -4,6 +4,9 @@ module.exports = function (comparator, encoder, options) {
         stop.value = encoder(value)
         stop.test = options.reverse ? function () { return true }
                                     : function (key) { return comparator(key, stop.value) <= 0 }
+        if (options.lt) {
+            stop.test = function (key) { return comparator(key, stop.value) < 0 }
+        }
     } else if (value = options.lt) {
         stop.value = encoder(value)
         stop.test = function (key) { return comparator(key, stop.value) < 0 }

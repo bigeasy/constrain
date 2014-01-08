@@ -1,9 +1,11 @@
-### Less Than, Greater Than, Equal To
+### Accommodate AbstractLevelDOWN Fixups
 
-Return less than, greater than or equal to so that an iterator implementation
-knows whether to advance to the next record, return the record or else terminate
-the iteration.
+AbstractLevelDOWN interprets the query parameters for us. It will set the start
+property in all cases. For greater than going forward and less than going in
+reverse, we get both a `start` property and a `lt` or `gt` property. Currently,
+our logic expects one or the other. Correlate now accommodates the presence of
+both a `start` key and a comparison key.
 
 ### Issue by Issue
 
- * Return less than, greater than, equal to. #21.
+ * Implement reversed `start` and `lt`. #23.

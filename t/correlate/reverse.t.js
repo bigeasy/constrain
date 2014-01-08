@@ -1,4 +1,4 @@
-require('proof')(14, function (ok, equal) {
+require('proof')(17, function (ok, equal) {
     function compare (a, b) { return a - b }
     function encoder (key) { return key }
     var correlate = require('../..')
@@ -20,4 +20,8 @@ require('proof')(14, function (ok, equal) {
     equal(range.valid(1), 0, 'reverse gte equal')
     equal(range.valid(0), 1, 'reverse gte less than')
     ok(range.key == null, 'reverse no key')
+    var range = correlate(compare, encoder, { start: 1, lt: 1, reverse: true })
+    equal(range.key, 1, 'reverse start and gt key')
+    equal(range.valid(1), -1, 'reverse start and lt equal')
+    equal(range.valid(0), 0, 'reverse start and lt less than')
 })
