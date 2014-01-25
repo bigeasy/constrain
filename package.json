@@ -1,26 +1,26 @@
 {
-    "name":             "correlate",
+    "name":             "constrain",
     "version":          "0.0.5",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "Create a compartor strategy based on LevelUP API iterator parameters.",
-    "url":              "http://bigeasy.github.com/correlate",
+    "url":              "http://bigeasy.github.com/constrain",
     "keywords":
     [
                         "btree", "leveldb", "levelup", "binary", "mvcc",
                         "database", "json", "b-tree", "concurrent", "persistence"
     ],
     "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/correlate",
-    "bugs":             "https://github.com/bigeasy/correlate/issues",
+    "homepage":         "https://github.com/bigeasy/constrain",
+    "bugs":             "https://github.com/bigeasy/constrain/issues",
     "licenses":
     [{
                         "type": "MIT",
-                        "url": "http://github.com/bigeasy/correlate/raw/master/LICENSE"
+                        "url": "http://github.com/bigeasy/constrain/raw/master/LICENSE"
     }],
     "repository":
     {
                         "type": "git",
-                        "url": "http://github.com/bigeasy/correlate.git"
+                        "url": "http://github.com/bigeasy/constrain.git"
     },
     "dependencies":
     {
