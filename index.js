@@ -26,7 +26,7 @@ module.exports = function (comparator, encoder, options) {
     } else {
         start.test =function () { return true }
     }
-    if (options.limit != null) {
+    if (options.limit != null && options.limit >= 0) {
         limit = options.limit
     }
     var range = options.reverse
