@@ -1,4 +1,4 @@
-require('proof')(17, function (ok, equal) {
+require('proof')(18, function (ok, equal) {
     function compare (a, b) { return a - b }
     function encoder (key) { return key }
     var constrain = require('../..')
@@ -24,4 +24,6 @@ require('proof')(17, function (ok, equal) {
     var range = constrain(compare, encoder, { start: 1, limit: -1 })
     equal(range.valid(1), 0, 'forward unlimited limit not met')
     equal(range.valid(2), 0, 'forward unlimited limit unlimited')
+    var range = constrain(compare, encoder, { start: 1, end: 3 })
+    equal(range.valid(4), 1, 'forward end beyond')
 })

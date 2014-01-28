@@ -1,4 +1,4 @@
-require('proof')(17, function (ok, equal) {
+require('proof')(18, function (ok, equal) {
     function compare (a, b) { return a - b }
     function encoder (key) { return key }
     var constrain = require('../..')
@@ -24,4 +24,6 @@ require('proof')(17, function (ok, equal) {
     equal(range.key, 1, 'reverse start and gt key')
     equal(range.valid(1), -1, 'reverse start and lt equal')
     equal(range.valid(0), 0, 'reverse start and lt less than')
+    var range = constrain(compare, encoder, { start: 2, end: 1, reverse: true })
+    equal(range.valid(0), 1, 'reverse end beyond')
 })

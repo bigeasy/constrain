@@ -1,5 +1,13 @@
 module.exports = function (comparator, encoder, options) {
     var value, start = {}, stop = {}, limit = Number.MAX_VALUE, count = 0
+    options = Object.create(options)
+    if (options.end) {
+        if (options.reverse) {
+            options.gte = options.end
+        } else {
+            options.lte = options.end
+        }
+    }
     if ((options.reverse && (value = options.start)) || (value = options.lte)) {
         stop.value = encoder(value)
         stop.test = options.reverse ? function () { return true }
