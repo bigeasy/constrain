@@ -4,3 +4,7 @@
  * Update license dates. #43.
  * Remove `require.t.js`. #42.
  * Rename main module to `constrain.js`. #41.
+ * Upgrade Proof to 0.0.48. #40.
+ * Upgrade Proof to 0.0.47. #39.
+ * Upgrade Proof to 0.0.44. #38.
+ * Remove "url" from `package.json`. #37.
