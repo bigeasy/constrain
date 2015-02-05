@@ -21,12 +21,13 @@
                         "type": "git",
                         "url": "http://github.com/bigeasy/constrain.git"
     },
+    "main":             "constrain",
     "dependencies":
     {
     },
     "devDependencies":
     {
-                        "proof":              "0.0.48"
+                        "proof":              "0.0.50"
     },
     "scripts":
     {
