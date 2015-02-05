@@ -1,4 +1,5 @@
 ### Issue by Issue
 
+ * Update license dates. #43.
  * Remove `require.t.js`. #42.
  * Rename main module to `constrain.js`. #41.
