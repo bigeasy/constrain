@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Revert tests for not `null`. #50.
  * Implement `inclusive` property. #47.
  * Use a `prove` named function in tests. #44.
  * Update license dates. #43.

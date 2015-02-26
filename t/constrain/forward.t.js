@@ -34,4 +34,6 @@ function prove (assert) {
     assert(range.valid(2), 0, 'forward unlimited limit unlimited')
     var range = constrain(compare, encoder, { start: 1, end: 3 })
     assert(range.valid(4), 1, 'forward end beyond')
+    var range = constrain(compare, encoder, { lte: null })
+    console.log(range)
 }
