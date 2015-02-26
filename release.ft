@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Implement `inclusive` property. #47.
  * Use a `prove` named function in tests. #44.
  * Update license dates. #43.
  * Remove `require.t.js`. #42.

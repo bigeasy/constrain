@@ -1,15 +1,17 @@
-require('proof')(18, prove)
+require('proof')(23, prove)
 
 function prove (assert) {
     function compare (a, b) { return a - b }
     function encoder (key) { return key }
     var constrain = require('../..')
     var range = constrain(compare, encoder, {})
+    assert(range.inclusive, 'forward no key inclusive')
     assert(range.valid(1), 0, 'forward no key start')
     assert(range.valid(1), 0, 'forward no key stop')
     assert(range.key == null, 'forward no key')
     assert(range.direction, 'forward', 'forward direction')
     var range = constrain(compare, encoder, { gte: 1, lte: 3 })
+    assert(range.inclusive, 'forward gte inclusive')
     assert(range.valid(1), 0, 'forward gte equal')
     assert(range.valid(2), 0, 'forward gte greater than')
     assert(range.valid(2), 0, 'forward lte less than')
@@ -17,10 +19,14 @@ function prove (assert) {
     assert(range.valid(4), 1, 'forward lte greater than')
     assert(range.key, 1, 'forward lte key')
     var range = constrain(compare, encoder, { start: 1, gt: 1 })
+    assert(!range.inclusive, 'forward start and gt inclusive')
     assert(range.key, 1, 'forward start and gt key')
     assert(range.valid(1), -1, 'forward start and gt equal')
     assert(range.valid(2), 0, 'forward start and gt greater than')
+    var range = constrain(compare, encoder, { gt: 1 })
+    assert(!range.inclusive, 'forward gt inclusive')
     var range = constrain(compare, encoder, { start: 1, limit: 1 })
+    assert(range.inclusive, 'forward start inclusive')
     assert(range.valid(1), 0, 'forward limit not met')
     assert(range.valid(2), 1, 'forward limit met')
     var range = constrain(compare, encoder, { start: 1, limit: -1 })
