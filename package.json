@@ -11,11 +11,7 @@
     "contributors":     [],
     "homepage":         "https://github.com/bigeasy/constrain",
     "bugs":             "https://github.com/bigeasy/constrain/issues",
-    "licenses":
-    [{
-                        "type": "MIT",
-                        "url": "http://github.com/bigeasy/constrain/raw/master/LICENSE"
-    }],
+    "license":          "MIT",
     "repository":
     {
                         "type": "git",
