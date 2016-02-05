@@ -1,6 +1,6 @@
 {
     "name":             "constrain",
-    "version":          "0.0.13",
+    "version":          "1.0.0",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "Create a compartor strategy based on LevelUP API iterator parameters.",
     "keywords":
