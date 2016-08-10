@@ -1,13 +1,16 @@
 {
     "name":                 "constrain",
     "version":              "1.0.0",
-    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":          "Create a compartor strategy based on LevelUP API iterator parameters.",
+    "description":
+
+      "Create a compartor strategy based on LevelUP API iterator parameters.",
+
     "keywords":
     [
                             "btree", "leveldb", "levelup", "binary", "mvcc",
                             "database", "json", "b-tree", "concurrent", "persistence"
     ],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
     "homepage":             "https://github.com/bigeasy/constrain",
     "bugs":                 "https://github.com/bigeasy/constrain/issues",
     "license":              "MIT",
@@ -16,7 +19,6 @@
                             "type": "git",
                             "url": "http://github.com/bigeasy/constrain.git"
     },
-    "main":                 "constrain",
     "dependencies":
     {
     },
@@ -24,6 +26,7 @@
     {
                             "proof":                        "1.0.x"
     },
+    "main":                 "constrain",
     "scripts":
     {
                             "test": "proof platform win32 && proof test */*.t.js || t/test"
