@@ -3,7 +3,7 @@ require('proof')(23, prove)
 function prove (assert) {
     function compare (a, b) { return a - b }
     function encoder (key) { return key }
-    var constrain = require('../..')
+    var constrain = require('..')
     var range = constrain(compare, encoder, { lt: 3, gt: 1, reverse: true })
     assert(!range.inclusive, 'reverse gt inclusive')
     assert(range.valid(3), -1, 'reverse lt equal')

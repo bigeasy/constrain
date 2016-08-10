@@ -3,7 +3,7 @@ require('proof')(23, prove)
 function prove (assert) {
     function compare (a, b) { return a - b }
     function encoder (key) { return key }
-    var constrain = require('../..')
+    var constrain = require('..')
     var range = constrain(compare, encoder, {})
     assert(range.inclusive, 'forward no key inclusive')
     assert(range.valid(1), 0, 'forward no key start')
