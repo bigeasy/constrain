@@ -1,6 +1,6 @@
 {
     "name":                 "constrain",
-    "version":              "1.0.0",
+    "version":              "1.0.1",
     "description":
 
       "Create a compartor strategy based on LevelUP API iterator parameters.",
