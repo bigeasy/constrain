@@ -1,36 +1,46 @@
-require('proof')(23, prove)
+require('proof')(21, prove)
 
-function prove (assert) {
+function prove (okay) {
     function compare (a, b) { return a - b }
     function encoder (key) { return key }
-    var constrain = require('..')
-    var range = constrain(compare, encoder, { lt: 3, gt: 1, reverse: true })
-    assert(!range.inclusive, 'reverse gt inclusive')
-    assert(range.valid(3), -1, 'reverse lt equal')
-    assert(range.valid(2), 0, 'reverse lt less than')
-    assert(range.valid(1), 1, 'reverse gt equal')
-    assert(range.valid(2), 0, 'reverse gt greater than')
-    assert(range.direction, 'reverse', 'reverse direction')
-    var range = constrain(compare, encoder, { lte: 3, gt: 1, reverse: true })
-    assert(range.inclusive, 'reverse gte inclusive')
-    assert(range.key, 3, 'reverse lte key')
-    assert(range.valid(3), 0, 'reverse lte equal')
-    assert(range.valid(2), 0, 'reverse lte less than')
-    var range = constrain(compare, encoder, { start: 3, reverse: true })
-    assert(range.inclusive, 'reverse start inclusive')
-    assert(range.key, 3, 'reverse start key')
-    assert(range.valid(3), 0, 'reverse start equal')
-    assert(range.valid(2), 0, 'reverse start less than')
-    var range = constrain(compare, encoder, { gte: 1, reverse: true })
-    assert(range.inclusive, 'reverse no key inclusive')
-    assert(range.valid(1), 0, 'reverse gte equal')
-    assert(range.valid(0), 1, 'reverse gte less than')
-    assert(range.key == null, 'reverse no key')
-    var range = constrain(compare, encoder, { start: 1, lt: 1, reverse: true })
-    assert(!range.inclusive, 'reverse start and lt inclusive')
-    assert(range.key, 1, 'reverse start and lt key')
-    assert(range.valid(1), -1, 'reverse start and lt equal')
-    assert(range.valid(0), 0, 'reverse start and lt less than')
-    var range = constrain(compare, encoder, { start: 2, end: 1, reverse: true })
-    assert(range.valid(0), 1, 'reverse end beyond')
+    const constrain = require('..')
+    {
+        const range = constrain(compare, encoder, { lt: 3, gt: 1, reverse: true })
+        okay(!range.inclusive, 'reverse gt inclusive')
+        okay(range.included(2), 'reverse lt less than')
+        okay(!range.included(1), 'reverse gt equal')
+        okay(range.direction, 'reverse', 'reverse direction')
+    }
+    {
+        const range = constrain(compare, encoder, { lte: 3, gt: 1, reverse: true })
+        okay(range.inclusive, 'reverse gte inclusive')
+        okay(range.key, 3, 'reverse lte key')
+        okay(range.included(3), 'reverse lte equal')
+        okay(range.included(2), 'reverse lte less than')
+        okay(!range.included(1), 'reverse lte less excluded')
+    }
+    {
+        const range = constrain(compare, encoder, { end: 3, reverse: true })
+        okay(range.inclusive, 'reverse start inclusive')
+        okay(range.key, 3, 'reverse start key')
+        okay(range.included(3), 'reverse start equal')
+        okay(range.included(2), 'reverse start less than')
+    }
+    {
+        const range = constrain(compare, encoder, { gte: 1, reverse: true })
+        okay(range.inclusive, 'reverse no key inclusive')
+        okay(range.included(1), 'reverse gte equal')
+        okay(!range.included(0), 'reverse gte less than')
+        okay(range.key, null, 'reverse no key')
+    }
+    {
+        const range = constrain(compare, encoder, { end: 1, lt: 1, reverse: true })
+        okay(!range.inclusive, 'reverse start and lt inclusive')
+        okay(range.key, 1, 'reverse start and lt key')
+        okay(range.included(0), 'reverse start and lt less than')
+    }
+    {
+        const range = constrain(compare, encoder, { start: 2, end: 1, reverse: true })
+        okay(!range.included(0), 'reverse end beyond')
+    }
 }
