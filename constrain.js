@@ -1,6 +1,7 @@
 module.exports = function (comparator, encoder, options) {
-    const direction = options.reverse ? 'reverse' : 'forward'
-    const include = (options.reverse ? options.gt : options.lt) ? 0 : 1
+    const reverse = options.reverse || false
+    const direction = reverse ? 'reverse' : 'forward'
+    const include = (reverse ? options.gt : options.lt) ? 0 : 1
     const multipler = options.reverse ? -1 : 1
     const inclusive = ! (options.reverse ? options.lt : options.gt)
     const start = options.gt || options.start || options.gte || null
