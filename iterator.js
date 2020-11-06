@@ -23,6 +23,7 @@ module.exports = function (source, options) {
     } ()
     const iterator = {
         done: false,
+        type: source.type,
         next (trampoline, consume, terminator = iterator) {
             source.next(trampoline, items => {
                 for (let i = 0, I = items.length; i < I; i++) {
