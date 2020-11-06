@@ -1,13 +1,15 @@
 const coalesce = require('extant')
 const assert = require('assert')
 
+const mvcc = require('mvcc')
+
 module.exports = function (source, options) {
     const terminate = function () {
         if (typeof options == 'function') {
             return options
         }
         const include = options.key == null || coalesce(options.inclusive, true) ? 1 : 0
-        const reverse = options.reverse ? -1 : 1
+        const reverse = source.type == mvcc.REVERSE ? -1 : 1
         const comparator = options.key == null
             ? function () { return 0 }
             : options.comparator

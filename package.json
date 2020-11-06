@@ -21,10 +21,11 @@
     },
     "dependencies":
     {
+                            "mvcc":                         "2.0.0-alpha.2"
     },
     "devDependencies":
     {
-                            "advance":                      "3.0.0-alpha.3",
+                            "advance":                      "3.0.0-alpha.8",
                             "extant":                       "^1.0.20",
                             "proof":                        "^9.0.2"
     },

@@ -14,7 +14,7 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.forward(set)
+        const iterator = mvcc.advance(set)
         const constrained = mvcc.constrain(iterator, { key: 4, comparator })
         while (! constrained.done) {
             constrained.next(null, items => {
@@ -26,7 +26,7 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.forward(set)
+        const iterator = mvcc.advance(set)
         const constrained = mvcc.constrain(iterator, { key: 4, comparator, inclusive: false })
         while (! constrained.done) {
             constrained.next(null, items => {
@@ -38,8 +38,8 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.reverse(set)
-        const constrained = mvcc.constrain(iterator, { key: 3, comparator, reverse: true })
+        const iterator = mvcc.advance(set, { reverse: true })
+        const constrained = mvcc.constrain(iterator, { key: 3, comparator })
         while (! constrained.done) {
             constrained.next(null, items => {
                 gathered.push.apply(gathered, items)
@@ -50,8 +50,8 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.reverse(set)
-        const constrained = mvcc.constrain(iterator, { key: 3, comparator, reverse: true, inclusive: false })
+        const iterator = mvcc.advance(set, { reverse: true })
+        const constrained = mvcc.constrain(iterator, { key: 3, comparator, inclusive: false })
         while (! constrained.done) {
             constrained.next(null, items => {
                 gathered.push.apply(gathered, items)
@@ -62,7 +62,7 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.forward(set)
+        const iterator = mvcc.advance(set)
         const constrained = mvcc.constrain(iterator, { key: 4, comparator, limit: 0 })
         while (! constrained.done) {
             constrained.next(null, items => {
@@ -74,7 +74,7 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.forward(set)
+        const iterator = mvcc.advance(set)
         const constrained = mvcc.constrain(iterator, { key: 4, comparator, limit: 2 })
         while (! constrained.done) {
             constrained.next(null, items => {
@@ -86,7 +86,7 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.forward(set)
+        const iterator = mvcc.advance(set)
         const constrained = mvcc.constrain(iterator, item => item.key == 3)
         while (! constrained.done) {
             constrained.next(null, items => {
@@ -98,7 +98,7 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.forward(set)
+        const iterator = mvcc.advance(set)
         const constrained = mvcc.constrain(iterator, item => item.key == 3)
         while (! constrained.done) {
             constrained.next(null, items => {
@@ -110,7 +110,7 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.forward(set)
+        const iterator = mvcc.advance(set)
         const constrained = mvcc.constrain(iterator, { limit: 2 })
         while (! constrained.done) {
             constrained.next(null, items => {
@@ -122,8 +122,8 @@ require('proof')(10, async okay => {
 
     {
         const gathered = []
-        const iterator = mvcc.advance.reverse(set)
-        const constrained = mvcc.constrain(iterator, { limit: 2, reverse: true })
+        const iterator = mvcc.advance(set, { reverse: true })
+        const constrained = mvcc.constrain(iterator, { limit: 2 })
         while (! constrained.done) {
             constrained.next(null, items => {
                 gathered.push.apply(gathered, items)
