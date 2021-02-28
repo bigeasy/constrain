@@ -26,7 +26,7 @@
     "devDependencies":
     {
                             "advance":                      "3.0.0-alpha.9",
-                            "extant":                       "^1.0.20",
+                            "extant":                       "^2.0.0-alpha.0",
                             "proof":                        "^9.0.2"
     },
     "main":                 "constrain",
